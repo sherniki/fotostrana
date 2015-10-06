@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/configuration/ApplicationConfiguration.java=UTF-8
+encoding//src/configuration/Configuration.java=UTF-8
+encoding//src/configuration/IConfiguration.java=UTF-8
+encoding//src/configuration/utils=UTF-8
+encoding//src/configuration/utils/xml=UTF-8
+encoding//src/fotostrana/ru/log/Log.java=UTF-8
+encoding//src/fotostrana/ru/network/NetworkManager.java=UTF-8
+encoding//src/fotostrana/ru/task/Task.java=UTF-8
+encoding//src/fotostrana/ru/task/tasks/nominations/TaskVotingInTheNomination.java=UTF-8
+encoding/<project>=UTF-8
+encoding/src=UTF-8
+separateDerivedEncodings=true
