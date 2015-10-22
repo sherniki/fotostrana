@@ -6,3 +6,6 @@
 
 <h3>Build</h3>
 mvn install
+
+<h3>Git versions</h3>
+git tag -a v1.1 -m <message>
