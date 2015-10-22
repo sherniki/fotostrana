@@ -14,6 +14,7 @@ import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 
+import fotostrana.ru.Application;
 import fotostrana.ru.events.Event;
 import fotostrana.ru.events.EventListener;
 import fotostrana.ru.events.application.EventCloseApplication;
@@ -50,7 +51,7 @@ public class WindowTasks extends JFrame implements EventListener {
 			String s = "НЕТ";
 			if (report.countWorkingProfiles > 0)
 				s = Integer.toString(report.countWorkingProfiles);
-			String newTitle = title + "  (" + s + " рабочих анкет, "
+			String newTitle ="Version:"+Application.APPLICATION.getVersion()+"; "+ title + "  (" + s + " рабочих анкет, "
 					+ report.countBannedProfiles + " забаненых)";
 			setTitle(newTitle);
 		}
