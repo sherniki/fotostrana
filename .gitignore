@@ -1,1 +1,12 @@
 /bin
+/target
+/.settings
+/.classpath
+/.gitignore
+/.project
+/Логи
+/configuration.xml
+/cookies.data
+/dependency-reduced-pom.xml
+/Отчет.xls
+/Рабочие анкеты.xls
