@@ -1,26 +1,28 @@
 package fotostarana.fotostarana.unit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.io.File;
+
 import org.junit.Test;
 
 import configuration.ApplicationConfiguration;
-import configuration.utils.xml.XMLReader;
 
 public class ConfigurationTest {
   private static String CONFIG_FILE = "test/configuration.xml";
 
   @Test
   public void testReadConfig() {
-    ApplicationConfiguration config = ApplicationConfiguration.INSTANCE;
-    XMLReader xmlReader = new XMLReader(config);
-    xmlReader.load(CONFIG_FILE);
-    assertTrue(config.getValue("test.string.empty").isEmpty());
-    assertEquals(config.getValue("test.string.value1"), "value1");
-    assertEquals(config.getValue("test.nonexistent.key"), null);
-    assertEquals(config.getValue("test.nonexistent.key", "defaultValue"), "defaultValue");
-    assertEquals(config.getIntValue("test.int.value1"), new Integer(12));
-    assertEquals(config.getIntValue("test.int.empty"), null);
-    assertEquals(config.getIntValue("test.int.doublevalue"), null);
-    assertEquals(config.getIntValue("test.int.incorrectvalue"), null);
+    File file=new File(CONFIG_FILE);
+    System.out.println("file:"+file.getAbsolutePath());
+    ApplicationConfiguration config = ApplicationConfiguration.INSTANCE.readFile(CONFIG_FILE);
+    assertEquals(config.getValue("configuration.test.string.empty"),null);
+    assertEquals(config.getValue("configuration.test.string.value1"), "value1");
+    assertEquals(config.getValue("configuration.test.nonexistent.key"), null);
+    assertEquals(config.getValue("configuration.test.nonexistent.key", "defaultValue"), "defaultValue");
+    assertEquals(config.getIntValue("configuration.test.int.value1"), new Integer(12));
+    assertEquals(config.getIntValue("configuration.test.int.empty"), null);
+    assertEquals(config.getIntValue("configuration.test.int.doublevalue"), null);
+    assertEquals(config.getIntValue("configuration.test.int.incorrectvalue"), null);
   }
 }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<Log>
+		<FolderWithLogs>Логи</FolderWithLogs>
+		<StoragePeriod>14</StoragePeriod>
+	</Log>
 	<test>
 		<string>
 			<empty></empty>

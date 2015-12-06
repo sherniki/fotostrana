@@ -60,6 +60,7 @@ public class XMLReader extends Reader {
 					String attributePath = currentPath + SEPARATOR_ATTRIBUTE
 							+ atNode.getNodeName();
 					String nodeValue = atNode.getNodeValue();
+					System.out.println("add config:"+attributePath+"="+nodeValue);
 					configuration.setValue(attributePath, nodeValue);
 				}
 			}
