@@ -12,8 +12,11 @@ import fotostrana.ru.log.Log;
  * Конфигурация приложения
  * 
  */
-public enum ApplicationConfiguration implements IConfiguration {
-  INSTANCE;
+public class ApplicationConfiguration implements IConfiguration {
+  public static ApplicationConfiguration INSTANCE;
+  static {
+    INSTANCE = new ApplicationConfiguration();
+  }
 
   private Configuration configuration;
 
