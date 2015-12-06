@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<test>
+		<string>
+			<empty></empty>
+			<value1>value1</value1>
+		</string>
+		<int>
+			<empty></empty>
+			<value1>12</value1>
+			<doublevalue>12.0</doublevalue>
+			<incorrectvalue>notInteger</incorrectvalue>
+		</int>
+	</test>
+</configuration>
