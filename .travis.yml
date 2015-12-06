@@ -1,3 +1,4 @@
 language: java
 install: mvn install
-script: - mvn pmd:pmd
+script: 
+- mvn pmd:pmd
