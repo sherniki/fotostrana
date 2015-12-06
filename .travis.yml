@@ -1,2 +1,2 @@
 language: java
-install: mvn install
+install: mvn install pmd:pmd
