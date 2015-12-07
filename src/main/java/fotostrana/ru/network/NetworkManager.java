@@ -18,8 +18,11 @@ import fotostrana.ru.network.proxy.ProxyManager;
 import fotostrana.ru.network.storagesRequests.MultiQueueRequests;
 import fotostrana.ru.reports.StatusReportNetworkManager;
 
-public enum NetworkManager implements EventListener {
-  NETWORK_MANAGER;
+public class NetworkManager implements EventListener {
+ public static NetworkManager NETWORK_MANAGER;
+ static{
+	 NETWORK_MANAGER=new NetworkManager();
+ }
 
   /**
    * Максимальное количество одновременоо работающих соединений
@@ -99,8 +102,8 @@ public enum NetworkManager implements EventListener {
    * 
    * @return результат добавления,false - если небыло добавлено
    */
-  public boolean addNewConnection() {
-    AddressProxy proxy = ProxyManager.PROXY_MANAGER.getRandomFreeProxy();
+  public boolean addNewConnection(ProxyManager proxyManager) {
+    AddressProxy proxy = proxyManager.getRandomFreeProxy();
     if (proxy != null) {
       Connection connection = new Connection(proxy, storageRequests);
       listConnections.add(connection);
@@ -113,12 +116,15 @@ public enum NetworkManager implements EventListener {
       // + proxy.getProxy());
       return true;
     } else
-      ProxyManager.PROXY_MANAGER.updateProxy();
+      proxyManager.updateProxy();
     // Log.LOGGING
     // .addLog("Неудалось создать новое соединение. Нет свободных прокси.");
     return false;
   }
-
+  
+  public boolean addNewConnection() {
+	  return addNewConnection(ProxyManager.PROXY_MANAGER);
+  }
   /**
    * Создает максимально возможное, на даный момент, количество соединений
    * 

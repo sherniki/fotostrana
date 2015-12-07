@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -43,8 +44,11 @@ import fotostrana.ru.users.filtersUsers.FilterNewUsers;
  * 
  * 
  */
-public enum UserManager {
-	USER_MANAGER;
+public class UserManager {
+	public static UserManager USER_MANAGER;
+	static{
+		USER_MANAGER=new UserManager();
+	}
 	class IDComparator implements Comparator<String[]> {
 		@Override
 		public int compare(String[] arg0, String[] arg1) {
@@ -418,13 +422,17 @@ public enum UserManager {
 	public List<User> getUsers(UsersFilter usersFilter) {
 		List<User> result = new LinkedList<User>();
 		// System.out.println(workingUsers.);
-		for (User user : workingUsers) {
+		for (User user : getWorkingUsers()) {
 			if (usersFilter.filtrate(user)) {
 				result.add(user);
 			}
 		}
 
 		return result;
+	}
+	
+	public Collection<User> getWorkingUsers(){
+		return workingUsers;
 	}
 
 	public void loadConfiguration() {
