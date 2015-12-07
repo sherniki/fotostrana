@@ -34,6 +34,8 @@ public class FactoryTasks {
 	 * @return null если нельзя создать задание по входным данным
 	 */
 	public static Task createTask(String source) {
+		if ((source == null) || (source.isEmpty()))
+			return null;
 		Task task = null;
 		if (task == null)
 			task = createTestTask(source);
@@ -135,27 +137,27 @@ public class FactoryTasks {
 				if (Nomination.isNominationVoting(nomi))
 					if (quick) {
 						return new TaskQuickVotingInTheNomination(targetId,
-								nomi, intCountVotes, targetName,false);
+								nomi, intCountVotes, targetName, false);
 					} else
 						return new TaskVotingInTheNomination(targetId, nomi,
-								intCountVotes, targetName,false);
+								intCountVotes, targetName, false);
 				// турнир
 				if (nomi == Nomination.TOURNAMENT)
 					if (!quick)
 						return new TaskVotingTournament(targetId,
-								intCountVotes, targetName,false);
+								intCountVotes, targetName, false);
 					else
 						return new TaskQuickVotingTournament(targetId, nomi,
-								intCountVotes, targetName,false);
+								intCountVotes, targetName, false);
 				// PhotoTags
 				if (Nomination.isPhotoTagsNomination(nomi)) {
 					return new TaskVotingPhototags(targetId, nomi,
-							intCountVotes, targetName,false);
+							intCountVotes, targetName, false);
 				}
 				// Рейтинг
 				if (nomi == Nomination.RATING) {
 					return new TaskVotingRating(targetId, intCountVotes,
-							targetName,false);
+							targetName, false);
 				}
 			} catch (NumberFormatException e) {
 				return null;
