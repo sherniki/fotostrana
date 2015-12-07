@@ -9,3 +9,7 @@ mvn install
 
 <h3>Git versions</h3>
 git tag -a v1.1 -m <message>
+
+<h3> Run tests</h3>
+Maven :
+mvn test
