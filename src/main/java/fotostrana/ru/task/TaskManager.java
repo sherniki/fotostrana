@@ -32,8 +32,11 @@ import fotostrana.ru.task.tasks.proxy.TaskDownloadProxy;
  * @author Nikita
  * 
  */
-public enum TaskManager implements EventListener {
-	TASK_MANAGER;
+public class TaskManager implements EventListener {
+	public static TaskManager TASK_MANAGER;
+	static {
+		TASK_MANAGER = new TaskManager();
+	}
 
 	public int TIMER_DELAY = 2 * 1000;
 	/**

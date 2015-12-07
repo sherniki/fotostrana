@@ -27,14 +27,16 @@ public class FilterByProfiles implements UsersFilter {
 
 	@Override
 	public boolean filtrate(User user) {
-		if ((user.id.toLowerCase().indexOf(value) != -1)
-				|| ((user.urlAutoConnection.toLowerCase() + ",,")
-						.indexOf(value) != -1)
-				|| (user.name.toLowerCase().indexOf(value) != -1)
-				|| (user.login.toLowerCase().indexOf(value) != -1)
-				|| (user.color.toLowerCase().indexOf(value) != -1)) {
+		if (search(user.id, value))
 			return true;
-		}
+		if (search(user.urlAutoConnection + ",,", value))
+			return true;
+		if (search(user.name, value))
+			return true;
+		if (search(user.login, value))
+			return true;
+		if (search(user.color, value))
+			return true;
 		return false;
 	}
 
@@ -44,6 +46,12 @@ public class FilterByProfiles implements UsersFilter {
 
 	public void setValue(String value) {
 		this.value = value.toLowerCase();
+	}
+
+	private boolean search(String value, String param) {
+		if (value == null)
+			return false;
+		return value.toLowerCase().indexOf(param) != -1;
 	}
 
 }

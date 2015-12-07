@@ -49,6 +49,7 @@ public class UserManager {
 	static{
 		USER_MANAGER=new UserManager();
 	}
+	
 	class IDComparator implements Comparator<String[]> {
 		@Override
 		public int compare(String[] arg0, String[] arg1) {
@@ -192,7 +193,7 @@ public class UserManager {
 	 * @return false - если null или такой пользователь уже есть, true - если
 	 *         пользователь успешно добавлен
 	 */
-	private boolean addUser(User newUser) {
+	public boolean addUser(User newUser) {
 		if (newUser == null)
 			return false;
 		if (bannedUsers.contains(newUser))
