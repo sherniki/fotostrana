@@ -243,6 +243,19 @@ public class Connection implements Runnable, Comparable<Connection> {
 		if (countErrors >= countErrorsFillNotification) {
 			storageRequests.handleEvent(new ConnectionError(this));
 		}
+		try {
+      pause(getTimeSleepException());
+    } catch (InterruptedException e1) {
+      e1.printStackTrace();
+    }
+	}
+	
+	private long getTimeSleepException(){
+	  double maxTime=Math.pow(Math.E, countErrors);
+	  double minTime=Math.pow(Math.E, countErrors-1);
+	  double delta=maxTime-minTime;
+	  double randomDelay=random.nextDouble()*delta+minTime;
+	  return (long)(randomDelay*1000);
 	}
 
 	/**
